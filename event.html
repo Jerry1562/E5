@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script> 
+          /* 首先使用DOM0级处理程序
+           DOM0级事件在事件的冒泡阶段处理事件
+           结果：p >> id 
+           */
+    /* window.onload=function(){
+        var div = document.getElementById("id");
+        var p = document.getElementById("p");
+        div.onclick = function(){
+            console.log(this.id);
+        };
+        p.onclick = function(){
+            console.log(this.id);
+        };
+    } */
+    /* DOM2级事件处理程序可以指定在哪个阶段处理事件
+       true：捕获阶段 false：冒泡阶段
+       结果：id >> p 
+       */
+   /*  window.onload=function(){
+        var div = document.getElementById("id");
+        var p = document.getElementById("p"); 
+        div.addEventListener("click",function(){
+            console.log(this.id);
+        },true);
+        p.addEventListener("click",function(){
+            console.log(this.id);
+        },true);
+    } */
+    /* DOM2级移除事件处理程序，必须与addEventListener使用同一个事件处理函数 */
+    window.onload=function(){
+        var div = document.getElementById("id");
+        var p = document.getElementById("p");
+        function getId(){
+            console.log(this.id);
+        };
+        div.addEventListener("click",getId,false);
+        div.removeEventListener("click",getId,false);
+    }
+    </script>
+</head>
+<body>
+    <div id="id"><p id="p">准备</p></div>
+</body>
+</html>
