@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+   <script>
+       /* 使用DOM0级方法才成功，只需要在事件处理函数返回显示的字符串，不过浏览器一般都会屏蔽掉，只显示浏览器默认的信息*/
+   window.onload=function(){
+      window.onbeforeunload = function(){
+      return "message";
+     };
+   };
+   </script>
+</head>
+<body>
+    
+</body>
+</html> 
